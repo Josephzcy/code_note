@@ -1,0 +1,46 @@
+## 注意事项
+1. 输出如何转化
+2. 暴力法的替代思路
+  + 空间换时间
+
+### 两数之和
+1. vector 初始化：大括号初始化
+2. map存储未找到匹配点对的当前元素，key为当前的下标 -->{iter->second,i} ==>vector
+
+## 字母异位分组
+1. 特点：排序一样或者字母出现的次数是一样的
+1. 排序 + 哈希(string,vector<string>)
+2. 自定义类型作为哈希的key时，需要指定哈希函数
+3. 哈希函数有匿名函数
+```c++
+std::array<26, int> arr = {0}>；
+auto HashFunc = [](const std::string& s) {
+  
+}
+std::unordered_map<std::array<26, int>, std::vector<std::string>,HashFunc> map;
+// 返回值写法
+std::vector<vector<string>> ans;
+std::for_each(map.begin(), map.end(), [&ans](const auto& p) {
+  ans.emplace_back(p.second);
+})
+```
+## 3 最长连续序列,要用c++库函数
+1. 去重
+2. 连续：查找count,判断递增数是否存在
+3. 优化：从没有前驱的元素开始，查找count，有前驱的解一定是优于当前的情况
+4. 维持一个最大个数元素
+5. 借助stl的库函数
+ 
+
+## 双指针：快慢指针法
+### 4 移除零 
+1. 快慢指针:慢指针指向新数组更新位置，快指针指向原数组
+2. 原地移动 std::swap(nums[fast_index],nums[slow_index++]);
+
+### 4 盛最多水的容器(最大值问题)
+1. 容器面积怎么算？area = (right - left) * min(height[left],height[right])
+2. 怎么移动指针：谁高度最小就移动谁
+
+### 3. 三数之和
+  1. 如何去重,分别对a,b、c 进行去重 a：num[index] = num[index--]
+  2. 某个元素不止一个三元组
